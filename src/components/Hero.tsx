@@ -71,7 +71,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <h1 className="text-5xl md:text-7xl font-bold mb-6">
-            <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-white bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
               Joey Gavilo
             </span>
           </h1>
@@ -135,7 +135,9 @@ const Hero = () => {
           transition={{ duration: 2, repeat: Infinity }}
           className="text-gray-400"
         >
+          <a href="#about">
           <ChevronDown size={32} />
+          </a>
         </motion.div>
       </motion.div>
     </section>

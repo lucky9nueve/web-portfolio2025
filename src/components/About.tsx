@@ -1,10 +1,39 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Code, Palette, Settings, Zap } from 'lucide-react';
 import 'animate.css';
 
 const About = () => {
+  const [displayText, setDisplayText] = useState('');
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const texts = ['Web Developer','Wordpress Developer', 'Software Engineer', 'React Specialist', 'UI/UX Enthusiast'];
+
+  useEffect(() => {
+    const currentText = texts[currentIndex];
+    let charIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (charIndex < currentText.length) {
+        setDisplayText(currentText.substring(0, charIndex + 1));
+        charIndex++;
+      } else {
+        clearInterval(typingInterval);
+        setTimeout(() => {
+          const deletingInterval = setInterval(() => {
+            if (charIndex > 0) {
+              setDisplayText(currentText.substring(0, charIndex - 1));
+              charIndex--;
+            } else {
+              clearInterval(deletingInterval);
+              setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
+            }
+          }, 50);
+        }, 2000);
+      }
+    }, 100);
+
+    return () => clearInterval(typingInterval);
+  }, [currentIndex]);
   const [ref, inView] = useInView({
     threshold: 0.1,
     triggerOnce: true,
@@ -47,6 +76,12 @@ const About = () => {
           >
             About <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">Me</span>
           </motion.h2>
+
+          <div className="mb-6 text-xl md:text-2xl text-blue-200 h-8 flex items-center justify-center">
+            <span className="border-r-2 border-blue-400 animate-pulse pr-1">
+              {displayText}
+            </span>
+          </div>
           <motion.p
             variants={itemVariants}
             className="text-xl text-gray-300 max-w-3xl mx-auto mb-12"
