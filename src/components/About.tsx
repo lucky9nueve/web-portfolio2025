@@ -85,7 +85,7 @@ const About = () => {
           </div>
           <motion.p
             variants={itemVariants}
-            className="text-xl text-gray-300 max-w-8xl mx-auto mb-12 text-justify"
+            className="text-xl text-gray-300 max-w-8xl mx-auto mb-12"
           >
           I’m a front-end and back-end web developer based in Manila, Philippines, with over a decade of experience building efficient, scalable, and user-centric digital solutions. My work spans across diverse tech environments, combining practical development strategies with innovative approaches to problem-solving.
           <br /><br />
