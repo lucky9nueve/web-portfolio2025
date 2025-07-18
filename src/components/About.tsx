@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Code, Palette, Settings, Zap } from 'lucide-react';
+import cvDownload from '../docs/CV-Jgavilo-Webdeveloper.pdf';
 import 'animate.css';
 
 const About = () => {
@@ -77,14 +78,14 @@ const About = () => {
             About <span className="bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">Me</span>
           </motion.h2>
 
-          <div className="mb-6 text-xl md:text-2xl text-blue-200 h-8 flex items-center justify-center">
+          <div className="mb-8 text-xl md:text-2xl text-blue-200 h-8 flex items-center justify-center">
             <span className="border-r-2 border-blue-400 animate-pulse pr-1">
               {displayText}
             </span>
           </div>
           <motion.p
             variants={itemVariants}
-            className="text-xl text-gray-300 max-w-3xl mx-auto mb-12"
+            className="text-xl text-gray-300 max-w-8xl mx-auto mb-12 text-justify"
           >
           I’m a front-end and back-end web developer based in Manila, Philippines, with over a decade of experience building efficient, scalable, and user-centric digital solutions. My work spans across diverse tech environments, combining practical development strategies with innovative approaches to problem-solving.
           <br /><br />
@@ -129,6 +130,17 @@ const About = () => {
     </motion.div>
   ))}
 </div>
+   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 flex items-center justify-center">
+         <motion.a
+                    href={cvDownload}
+                    target="_blank"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="border-2 border-gray-300 hover:border-white text-gray-300 hover:text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-200"
+                  >
+                    Download CV
+            </motion.a>
+   </div>
       </div>
     </section>
   );
